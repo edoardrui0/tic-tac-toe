@@ -12,5 +12,5 @@ class Board
   end
 end
 
-test = Board.new
-puts test.new_board
+# test = Board.new
+# puts test.new_board
