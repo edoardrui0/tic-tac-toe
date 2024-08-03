@@ -4,17 +4,21 @@
 require_relative 'board'
 
 class Player
+  attr_accessor :name, :board, :ttt_board_arr
+
   def initialize(name)
     @name = name
+    @board = Board.new
   end
 
   def input
-    player_input = gets
-    player_input.chomp.to_i.between?(1, 9) ? (p player_input.chomp.to_i) : (p 'invalid input')
+    player_input = gets.chomp.to_i
+
+    @board.update_board(player_input, 'x')
+    puts @board.display_board
   end
 end
 
-eddie = Player.new('Eddie')
-eddie.input
-# test = Board.new
-# puts test.new_board
+player1 = Player.new('Player1')
+# eddie.input
+puts player1.input
