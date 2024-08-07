@@ -1,6 +1,3 @@
-# need to get input from user and update the board if the user selected between numbers 1-9
-# if not, alert the player they selected something that isn't allowed
-
 require_relative 'board'
 
 class Player
@@ -11,14 +8,21 @@ class Player
     @board = Board.new
   end
 
-  def input
-    player_input = gets.chomp.to_i
+  def game
+    puts 'Pick a position in the board (1-9)'
 
-    @board.update_board(player_input, 'x')
-    puts @board.display_board
+    until @board.check_winner
+      player_input = gets.chomp.to_i
+
+      if player_input.between?(1, 9)
+        @board.update_board(player_input, 'x')
+        puts @board.display_board
+      else
+        puts 'Invalid input'
+      end
+    end
   end
 end
 
 player1 = Player.new('Player1')
-# eddie.input
-puts player1.input
+player1.game
