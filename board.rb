@@ -35,7 +35,10 @@ class Board
 
   def check_winner
     WINNING_COMBINATIONS.any? do |combination|
-      combination.all? { |element| @cross_arr.uniq.include?(element) }
+      # bug here, i am not allowed to complete the game without it ending early. not sure what it may be
+      combination.all? do |element|
+        @cross_arr.uniq.include?(element) || @notch_arr.uniq.include?(element)
+      end
     end
   end
 end
