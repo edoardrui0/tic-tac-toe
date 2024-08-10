@@ -11,12 +11,13 @@ class Gameplay
   end
 
   def game
-    puts 'Input name for Player 1'
+    puts "Welcome to Tic Tac Toe! We'll start by asking your names.\n\n"
+    puts "Enter Player 1's name"
     @player1.name = gets.chomp
-    puts "Player 1 is '#{@player1.name}'. They will be 'x' and will go first"
-    puts 'Input name for Player 2'
+    puts "Player 1 is '#{@player1.name}'. They will be 'x' and will go first\n\n"
+    puts "Enter Player 2's name"
     @player2.name = gets.chomp
-    puts "Player 2 is '#{@player2.name}'. They will be 'o'"
+    puts "Player 2 is '#{@player2.name}'. They will be 'o'\n\n"
 
     until board.check_winner
       if player1.turn == true && player2.turn == false
@@ -28,6 +29,10 @@ class Gameplay
           puts @board.display_board
           player1.turn = false
           player2.turn = true
+          if board.check_winner
+            puts "#{@player1.name} wins!"
+            break
+          end
         else
           puts 'Invalid input'
         end
@@ -42,6 +47,10 @@ class Gameplay
           puts @board.display_board
           player1.turn = true
           player2.turn = false
+          if board.check_winner
+            puts "#{@player2.name} wins!"
+            break
+          end
         else
           puts 'Invalid input'
         end
