@@ -41,4 +41,10 @@ class Board
       cross_win || notch_win
     end
   end
+
+  def check_tie
+    @board_pos.all? do |pos|
+      %w[x o].include?(pos) && check_winner == false
+    end
+  end
 end

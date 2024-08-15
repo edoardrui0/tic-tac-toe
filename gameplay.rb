@@ -33,6 +33,10 @@ class Gameplay
             puts "#{@player1.name} wins!"
             break
           end
+          if board.check_tie
+            puts "It's a tie!"
+            break
+          end
         else
           puts 'Invalid input'
         end
@@ -49,6 +53,10 @@ class Gameplay
           player2.turn = false
           if board.check_winner
             puts "#{@player2.name} wins!"
+            break
+          end
+          if board.check_tie
+            puts "It's a tie!"
             break
           end
         else
