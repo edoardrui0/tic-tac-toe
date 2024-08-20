@@ -47,4 +47,9 @@ class Board
       %w[x o].include?(pos) && check_winner == false
     end
   end
+
+  def valid_move?(pos)
+    # Check if the selected position is not already occupied by 'x' or 'o'
+    !%w[x o].include?(@board_pos[pos - 1])
+  end
 end
